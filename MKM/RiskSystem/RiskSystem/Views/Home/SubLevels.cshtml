@@ -1,0 +1,34 @@
+﻿@model List<SubLevel>
+
+@{
+    ViewBag.Title = "Підрівні";
+}
+
+<h2>Підрівні</h2>
+
+@Html.ActionLink("Додати підрівень", "AddNewSubLevel")
+
+<table class="table table-hover table-striped table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Головний рівень</th>
+        <th>Назва підрівня</th>
+    </tr>
+    @foreach (var element in Model)
+    {
+        string l="";
+        foreach (var mainLevel in ViewBag.MainLevels)
+        {
+            if (element.LevelId == mainLevel.LevelId)
+            {
+                l = mainLevel.LevelName;
+            }
+
+        }
+        <tr>
+            <td>@element.SubLevelId</td>
+            <td>@l</td>
+            <td>@element.SubLevelName</td>
+        </tr>
+    }
+</table>

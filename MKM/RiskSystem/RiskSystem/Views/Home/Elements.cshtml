@@ -1,0 +1,45 @@
+﻿@model List<Element>
+
+@{
+    ViewBag.Title = "Елементи";
+}
+
+<h2>Елементи</h2>
+
+@Html.ActionLink("Додати елемент", "AddNewElement")
+
+<table class="table table-hover table-striped table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Головний рівень</th>
+        <th>Підрівень</th>
+        <th>Назва елементу</th>
+    </tr>
+    @foreach (var element in Model)
+    {
+        string l = "", sl = "";
+        foreach (var subLevel in ViewBag.SubLevels)
+        {
+            if (element.SubLevelId == subLevel.SubLevelId)
+            {
+                l = subLevel.SubLevelName;
+            }
+
+            foreach (var mainLevel in ViewBag.MainLevels)
+            {
+                if (subLevel.LevelId == mainLevel.LevelId)
+                {
+                    sl = mainLevel.LevelName;
+                }
+
+            }
+        }
+
+        <tr>
+            <td>@element.ElementId</td>
+            <td>@sl</td>
+            <td>@l</td>
+            <td>@element.ElementName</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,21 @@
+﻿@model RiskSystem.Models.Element
+
+@{
+    ViewBag.Title = "Додати елемент";
+}
+
+<h2>Додати елемент</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(x => x.SubLevelId)
+        @Html.EditorFor(x => x.SubLevelId)
+    </p>
+    <p>
+        @Html.LabelFor(x => x.ElementName)
+        @Html.EditorFor(x => x.ElementName)
+    </p>
+    
+    <input type="submit" value="Додати" />
+}

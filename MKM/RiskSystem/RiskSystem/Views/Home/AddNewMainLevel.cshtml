@@ -1,0 +1,17 @@
+﻿@model RiskSystem.Models.MainLevel
+
+@{
+    ViewBag.Title = "Додати рівень";
+}
+
+<h2>Додати рівень</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(x => x.LevelName)
+        @Html.EditorFor(x => x.LevelName)
+    </p>
+    
+    <input type="submit" value="Додати"/>
+}

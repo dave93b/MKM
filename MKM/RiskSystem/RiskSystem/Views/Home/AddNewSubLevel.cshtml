@@ -1,0 +1,22 @@
+﻿@model RiskSystem.Models.SubLevel
+
+@{
+    ViewBag.Title = "Додати підрівень";
+}
+
+<h2>Додати підрівень</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(x => x.LevelId)
+        @Html.EditorFor(x => x.LevelId)
+    </p>
+    <p>
+        @Html.LabelFor(x => x.SubLevelName)
+        @Html.EditorFor(x => x.SubLevelName)
+    </p>
+
+    
+    <input type="submit" value="Додати" />
+}
