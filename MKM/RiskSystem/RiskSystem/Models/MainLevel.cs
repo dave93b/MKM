@@ -6,7 +6,7 @@ namespace RiskSystem.Models
 {
     public class MainLevel
     {
-        [HiddenInput]
+        [ScaffoldColumn(false)]
         public int LevelId { get; set; }
         [Required(ErrorMessage = "Введіть назву рівня")]
         [Display(Name = "Назва рівня")]

@@ -10,11 +10,16 @@
 {
     <p>
         @Html.LabelFor(x => x.SubLevelId)
-        @Html.EditorFor(x => x.SubLevelId)
+        <select class="form-control" id="SubLevelId" name="SubLevelId">
+            @foreach (var subLevel in ViewBag.SubLevels)
+            {
+                <option value="@subLevel.SubLevelId">@subLevel.SubLevelName</option>
+            }
+        </select>
     </p>
     <p>
         @Html.LabelFor(x => x.ElementName)
-        @Html.EditorFor(x => x.ElementName)
+        @Html.TextBoxFor(x => x.ElementName, new { @class = "form-control" })
     </p>
     
     <input type="submit" value="Додати" />

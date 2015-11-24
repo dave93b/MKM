@@ -5,7 +5,7 @@ namespace RiskSystem.Models
 {
     public class SubLevel
     {
-        [HiddenInput]
+        [ScaffoldColumn(false)]
         public int SubLevelId { get; set; }
         [Display(Name = "Рівень")]
         public int LevelId { get; set; }

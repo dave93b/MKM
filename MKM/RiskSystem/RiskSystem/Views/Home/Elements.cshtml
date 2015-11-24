@@ -23,16 +23,17 @@
             if (element.SubLevelId == subLevel.SubLevelId)
             {
                 l = subLevel.SubLevelName;
-            }
-
-            foreach (var mainLevel in ViewBag.MainLevels)
-            {
-                if (subLevel.LevelId == mainLevel.LevelId)
+                foreach (var mainLevel in ViewBag.MainLevels)
                 {
-                    sl = mainLevel.LevelName;
-                }
+                    if (subLevel.LevelId == mainLevel.LevelId)
+                    {
+                        sl = mainLevel.LevelName;
+                    }
 
+                }
             }
+
+
         }
 
         <tr>

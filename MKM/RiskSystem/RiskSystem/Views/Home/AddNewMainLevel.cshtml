@@ -10,7 +10,7 @@
 {
     <p>
         @Html.LabelFor(x => x.LevelName)
-        @Html.EditorFor(x => x.LevelName)
+        @Html.TextBoxFor(x => x.LevelName,new { @class="form-control"})
     </p>
     
     <input type="submit" value="Додати"/>

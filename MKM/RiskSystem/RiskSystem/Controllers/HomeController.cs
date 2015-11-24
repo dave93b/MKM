@@ -44,31 +44,44 @@ namespace RiskSystem.Controllers
         [HttpPost]
         public ActionResult AddNewMainLevel(MainLevel mainLevel)
         {
-            return View();
+            var context = new RiskSystemEntities();
+            context.MainLevels.Add(mainLevel);
+            context.SaveChanges();
+            return RedirectToAction("MainLevels");
         }
 
         [HttpGet]
         public ActionResult AddNewSubLevel()
         {
+            var context = new RiskSystemEntities();
+            ViewBag.MainLevels = context.MainLevels.ToList();
             return View();
         }
 
         [HttpPost]
         public ActionResult AddNewSubLevel(SubLevel subLevel)
         {
-            return View();
+            var context = new RiskSystemEntities();
+            context.SubLevels.Add(subLevel);
+            context.SaveChanges();
+            return RedirectToAction("SubLevels");
         }
 
         [HttpGet]
         public ActionResult AddNewElement()
         {
+            var context = new RiskSystemEntities();
+            ViewBag.SubLevels = context.SubLevels.ToList();
             return View();
         }
 
         [HttpPost]
         public ActionResult AddNewElement(Element element)
         {
-            return View();
+            var context = new RiskSystemEntities();
+            context.Elements.Add(element);
+            context.SaveChanges();
+            return RedirectToAction("Elements");
         }
     }
 }
