@@ -56,3 +56,54 @@ add constraint
 FK_Element_SubLevelId FOREIGN KEY(SubLevelId)
 REFERENCES SubLevel(SubLevelId)
 GO
+
+Create table Damage
+(
+	[DamageId] int identity(1,1) NOT NULL,
+	[DamageName] NVARCHAR (max) NOT NULL
+)
+GO
+
+ALTER TABLE Damage
+add constraint 
+PK_DAMAGE_DamageId PRIMARY KEY(DamageId)
+GO
+
+Create table DamagePlace
+(
+	[DamagePlaceId] int identity(1,1) NOT NULL,
+	[LevelId] int NOT NULL,
+	[SubLevelId] int NOT NULL,
+	[ElementId] int NOT NULL,
+	[DamageId] int NOT NULL
+)
+GO
+
+ALTER TABLE DamagePlace
+add constraint 
+PK_DamagePlace_DamagePlaceId PRIMARY KEY(DamagePlaceId)
+GO
+
+ALTER TABLE DamagePlace
+add constraint 
+FK_DamagePlace_LevelId FOREIGN KEY(LevelId)
+REFERENCES MainLevel(LevelId)
+GO
+
+ALTER TABLE DamagePlace
+add constraint 
+FK_DamagePlace_SubLevelId FOREIGN KEY(SubLevelId)
+REFERENCES SubLevel(SubLevelId)
+GO
+
+ALTER TABLE DamagePlace
+add constraint 
+FK_DamagePlace_ElementId FOREIGN KEY(ElementId)
+REFERENCES Element(ElementId)
+GO
+
+ALTER TABLE DamagePlace
+add constraint 
+FK_DamagePlace_DamageId FOREIGN KEY(DamageId)
+REFERENCES Damage(DamageId)
+GO
