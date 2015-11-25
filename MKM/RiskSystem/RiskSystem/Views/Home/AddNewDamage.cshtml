@@ -1,0 +1,17 @@
+﻿@model RiskSystem.Damage
+
+@{
+    ViewBag.Title = "Додати пошкодження";
+}
+
+<h2>Додати пошкодження</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(x => x.DamageName)
+        @Html.TextBoxFor(x => x.DamageName, new { @class = "form-control" })
+    </p>
+
+    <input type="submit" value="Додати" />
+}

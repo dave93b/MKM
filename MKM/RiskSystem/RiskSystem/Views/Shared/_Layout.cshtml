@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title – приложение ASP.NET</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -23,8 +23,9 @@
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Головна", "Index", "Home")</li>*@
                     <li>@Html.ActionLink("Головні рівні", "MainLevels", "Home")</li>
-                    <li>@Html.ActionLink("Підрівні", "SubLevels", "Home")</li>
+                    <li>@Html.ActionLink("Підсистеми", "SubLevels", "Home")</li>
                     <li>@Html.ActionLink("Елементи", "Elements", "Home")</li>
+                    <li>@Html.ActionLink("Пошкодження", "Damages", "Home")</li>
                 </ul>
             </div>
         </div>
