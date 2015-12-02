@@ -7,7 +7,7 @@ namespace RiskSystem.Models
     {
         [ScaffoldColumn(false)]
         public int ElementId { get; set; }
-        [Display(Name = "Підрівень")]
+        [Display(Name = "Підсистема")]
         public int SubLevelId { get; set; }
         [Required(ErrorMessage = "Введіть назву елемента")]
         [Display(Name = "Назва елемента")]

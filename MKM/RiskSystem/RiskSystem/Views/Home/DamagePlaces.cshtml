@@ -1,0 +1,42 @@
+﻿@model List<RiskSystem.DamagePlace>
+
+@{
+    ViewBag.Title = "Місця пошкоджень";
+}
+
+<h2>Місця пошкоджень</h2>
+
+@Html.ActionLink("Додати місце пошкодження", "AddNewDamagePlace")
+
+<table class="table table-hover table-striped table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Назва елемента</th>
+        <th>Назва пошкодження</th>
+    </tr>
+    @foreach (var damagePlace in Model)
+    {
+        string elementText="",damageText="";
+        foreach (var element in @ViewBag.Elements)
+        {
+            if (element.ElementId == damagePlace.ElementId)
+            {
+                elementText = element.ElementName;
+                break;
+            }
+        }
+        foreach (var damage in @ViewBag.Damages)
+        {
+            if (damage.DamageId == damagePlace.DamageId)
+            {
+                damageText = damage.DamageName;
+                break;
+            }
+        }
+        <tr>
+            <td>@damagePlace.DamagePlaceId</td>
+            <td>@elementText</td>
+            <td>@damageText</td>
+        </tr>
+    }
+</table>

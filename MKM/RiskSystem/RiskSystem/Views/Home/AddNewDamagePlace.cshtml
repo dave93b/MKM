@@ -1,0 +1,31 @@
+﻿@model RiskSystem.DamagePlace
+
+@{
+    ViewBag.Title = "Додати місце пошкодження";
+}
+
+<h2>Додати місце пошкодження</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        <b>Елемент</b>
+        <select class="form-control" id="ElementId" name="ElementId">
+            @foreach (var element in ViewBag.Elements)
+            {
+                <option value="@element.ElementId">@element.ElementName</option>
+            }
+        </select>
+
+        <b>Пошкодження</b>
+        <select class="form-control" id="DamageId" name="DamageId">
+            @foreach (var damage in ViewBag.Damages)
+            {
+                <option value="@damage.DamageId">@damage.DamageName</option>
+            }
+        </select>
+    </p>
+
+
+    <input type="submit" value="Додати" />
+}

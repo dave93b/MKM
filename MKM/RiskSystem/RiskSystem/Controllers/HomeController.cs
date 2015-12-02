@@ -41,6 +41,14 @@ namespace RiskSystem.Controllers
             return View(context.Damages.ToList());
         }
 
+        public ActionResult DamagePlaces()
+        {
+            var context = new RiskSystemEntities();
+            ViewBag.Elements = context.Elements.ToList();
+            ViewBag.Damages = context.Damages.ToList();
+            return View(context.DamagePlaces.ToList());
+        }
+
         [HttpGet]
         public ActionResult AddNewMainLevel()
         {
@@ -103,6 +111,24 @@ namespace RiskSystem.Controllers
             context.Damages.Add(damage);
             context.SaveChanges();
             return RedirectToAction("Damages");
+        }
+
+        [HttpGet]
+        public ActionResult AddNewDamagePlace()
+        {
+            var context = new RiskSystemEntities();
+            ViewBag.Elements = context.Elements.ToList();
+            ViewBag.Damages = context.Damages.ToList();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddNewDamagePlace(DamagePlace damagePlace)
+        {
+            var context = new RiskSystemEntities();
+            context.DamagePlaces.Add(damagePlace);
+            context.SaveChanges();
+            return RedirectToAction("DamagePlaces");
         }
     }
 }
