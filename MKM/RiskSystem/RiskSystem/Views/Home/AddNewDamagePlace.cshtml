@@ -9,8 +9,30 @@
 @using (Html.BeginForm())
 {
     <p>
-        <b>Елемент</b>
+        <b>Рівень пошкодження</b>
+        <select class="form-control" id="DamageLevel" name="DamageLevel">
+            <option value="1">Головний рівень</option>
+            <option value="2">Підсистема</option>
+            <option value="3">Елемент</option>
+        </select>
+
+        <b>Елемент пошкодження</b>
+        <select class="form-control" id="LevelId" name="LevelId">
+            <option value="" selected="selected">Оберіть головний рівень</option>
+            @foreach (var element in ViewBag.MainLevels)
+            {
+                <option value="@element.LevelId">@element.LevelName</option>
+            }
+        </select>
+        <select class="form-control" id="SubLevelId" name="SubLevelId">
+            <option value="" selected="selected">Оберіть підсистему</option>
+            @foreach (var element in ViewBag.SubLevels)
+            {
+                <option value="@element.SubLevelId">@element.SubLevelName</option>
+            }
+        </select>
         <select class="form-control" id="ElementId" name="ElementId">
+            <option value="" selected="selected">Оберіть елемент</option>
             @foreach (var element in ViewBag.Elements)
             {
                 <option value="@element.ElementId">@element.ElementName</option>
@@ -26,6 +48,25 @@
         </select>
     </p>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ElementId, #SubLevelId").hide();
 
+            $("#DamageLevel").change(function() {
+                if ($("#DamageLevel").val() == "1") {
+                    $("#LevelId").show();
+                    $("#ElementId, #SubLevelId").hide();
+                }
+                else if ($("#DamageLevel").val() == "2") {
+                    $("#SubLevelId").show();
+                    $("#ElementId, #LevelId").hide();
+                }
+                else if ($("#DamageLevel").val() == "3") {
+                    $("#ElementId").show();
+                    $("#SubLevelId, #LevelId").hide();
+                }
+            });
+        });
+    </script>
     <input type="submit" value="Додати" />
 }

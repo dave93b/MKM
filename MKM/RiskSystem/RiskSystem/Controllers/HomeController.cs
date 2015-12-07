@@ -44,6 +44,8 @@ namespace RiskSystem.Controllers
         public ActionResult DamagePlaces()
         {
             var context = new RiskSystemEntities();
+            ViewBag.MainLevels = context.MainLevels.ToList();
+            ViewBag.SubLevels = context.SubLevels.ToList();
             ViewBag.Elements = context.Elements.ToList();
             ViewBag.Damages = context.Damages.ToList();
             return View(context.DamagePlaces.ToList());
@@ -117,15 +119,22 @@ namespace RiskSystem.Controllers
         public ActionResult AddNewDamagePlace()
         {
             var context = new RiskSystemEntities();
+            ViewBag.MainLevels = context.MainLevels.ToList();
+            ViewBag.SubLevels = context.SubLevels.ToList();
             ViewBag.Elements = context.Elements.ToList();
             ViewBag.Damages = context.Damages.ToList();
             return View();
         }
 
         [HttpPost]
-        public ActionResult AddNewDamagePlace(DamagePlace damagePlace)
+        public ActionResult AddNewDamagePlace(/*DamagePlace damagePlace*/int? LevelId, int? SubLevelId, int? ElementId, int DamageLevel, int DamageId)
         {
             var context = new RiskSystemEntities();
+            DamagePlace damagePlace=new DamagePlace();
+            damagePlace.LevelId = LevelId;
+            damagePlace.SubLevelId = SubLevelId;
+            damagePlace.ElementId = ElementId;
+            damagePlace.DamageId = DamageId;
             context.DamagePlaces.Add(damagePlace);
             context.SaveChanges();
             return RedirectToAction("DamagePlaces");

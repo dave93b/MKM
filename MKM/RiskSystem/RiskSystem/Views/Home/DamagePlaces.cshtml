@@ -11,12 +11,30 @@
 <table class="table table-hover table-striped table-bordered">
     <tr>
         <th>Id</th>
+        <th>Назва головного рівня</th>
+        <th>Назва підсистеми</th>
         <th>Назва елемента</th>
         <th>Назва пошкодження</th>
     </tr>
     @foreach (var damagePlace in Model)
     {
-        string elementText="",damageText="";
+        string elementText="-",damageText="", levelText="-",subLevelText="-";
+        foreach (var level in @ViewBag.MainLevels)
+        {
+            if (level.LevelId == damagePlace.LevelId)
+            {
+                levelText = level.LevelName;
+                break;
+            }
+        }
+        foreach (var subLevel in @ViewBag.SubLevels)
+        {
+            if (subLevel.SubLevelId == damagePlace.SubLevelId)
+            {
+                subLevelText = subLevel.SubLevelName;
+                break;
+            }
+        }
         foreach (var element in @ViewBag.Elements)
         {
             if (element.ElementId == damagePlace.ElementId)
@@ -35,6 +53,8 @@
         }
         <tr>
             <td>@damagePlace.DamagePlaceId</td>
+            <td>@levelText</td>
+            <td>@subLevelText</td>
             <td>@elementText</td>
             <td>@damageText</td>
         </tr>
