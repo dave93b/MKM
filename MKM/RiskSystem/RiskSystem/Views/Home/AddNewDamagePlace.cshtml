@@ -52,7 +52,8 @@
         $(document).ready(function () {
             $("#ElementId, #SubLevelId").hide();
 
-            $("#DamageLevel").change(function() {
+            $("#DamageLevel").change(function () {
+                $("#LevelId, #ElementId, #SubLevelId").val('');
                 if ($("#DamageLevel").val() == "1") {
                     $("#LevelId").show();
                     $("#ElementId, #SubLevelId").hide();
